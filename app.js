@@ -8,6 +8,11 @@
  *
 ******************************************************************/
 
+const MESSAGE_ERROR_EMPTY        = 'ERRO: É obrigatório o preenchimento de todas as informações.'
+const MESSAGE_ERROR_OUT_OF_RANGE = 'ERRO: Dados invalidos. Você deve entrar com valores entre 0 e 10.'
+const MESSAGE_ERROR_NAN          = 'ERRO: Dados invalidos. A caixa deve conter apenas números, sem letras'
+const MESSAGE_ERROR_HAS_A_NUMBER             = 'ERRO: Dados invalidos. A caixa deve conter apenas nome, sem números'
+
 /**
  * 
  * Formas de criar uma variável
@@ -90,18 +95,18 @@ entradaDeDados.question('Digite o nome do aluno:', function(nome){
 
                     //validação de entrada vazia
                     if(nomeAluno == '' || nota1 == '' || nota2 == '' || nota3 == '' || nota4 == ''){
-                        console.log('ERRO: É obrigatório o preenchimento de todas as informações.')
+                        console.log(MESSAGE_ERROR_EMPTY)
                     }else if(!isNaN(nomeAluno)){
-                        console.log('ERRO: Dados invalidos. A caixa deve conter apenas nome, sem números')
+                        console.log(MESSAGE_ERROR_HAS_A_NUMBER)
                     //validação para bloquear a entrada de letras
                     }else if(isNaN(nota1) == true || isNaN(nota2) == true || isNaN(nota3) == true || isNaN(nota4) == true){
-                        console.log('ERRO: Dados invalidos. As notas aceitam apenas números')
+                        console.log(MESSAGE_ERROR_NAN)
                     //validação de valores entre 0 e 10
                     }else if(Number(nota1) < 0 || Number(nota1) > 10 || 
                              Number(nota2) < 0 || Number(nota2) > 10 || 
                              Number(nota3) < 0 || Number(nota3) > 10 || 
                              Number(nota4) < 0 || Number(nota1) > 10){
-                        console.log('ERRO: Dados invalidos. Você deve entrar com valores entre 0 e 10.')
+                        console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                     }else{
                         let media = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4)) / 4
                         let statusAluno
