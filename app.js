@@ -88,20 +88,25 @@ entradaDeDados.question('Digite o nome do aluno:', function(nome){
                 entradaDeDados.question('Digite a nota4:', function(valor4){
                     let nota4 = valor4
 
-                    
+                    //validação de entrada vazia
                     if(nomeAluno == '' || nota1 == '' || nota2 == '' || nota3 == '' || nota4 == ''){
                         console.log('ERRO: É obrigatório o preenchimento de todas as informações.')
                     }else if(!isNaN(nomeAluno)){
                         console.log('ERRO: Dados invalidos. A caixa deve conter apenas nome, sem números')
+                    //validação para bloquear a entrada de letras
                     }else if(isNaN(nota1) == true || isNaN(nota2) == true || isNaN(nota3) == true || isNaN(nota4) == true){
-                        console.log('ERRO: Dados invalidos. As notas apenas aceitam apenas números')
-                    }else if(Number(nota1) < 0 || Number(nota1) > 10 || Number(nota2) < 0 || Number(nota2) > 10 || Number(nota3) < 0 || Number(nota3) > 10 || Number(nota4) < 0 || Number(nota1) > 10){
+                        console.log('ERRO: Dados invalidos. As notas aceitam apenas números')
+                    //validação de valores entre 0 e 10
+                    }else if(Number(nota1) < 0 || Number(nota1) > 10 || 
+                             Number(nota2) < 0 || Number(nota2) > 10 || 
+                             Number(nota3) < 0 || Number(nota3) > 10 || 
+                             Number(nota4) < 0 || Number(nota1) > 10){
                         console.log('ERRO: Dados invalidos. Você deve entrar com valores entre 0 e 10.')
                     }else{
                         let media = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4)) / 4
                         let statusAluno
                         if(media >= 7 && media <= 10){
-                            statusAluno = 'APROVADO'
+                            statusAluno = 'APROVADO'    
                         }else if(media <= 7 && media >= 5){
                             statusAluno = 'EXAME'
                         }else if(media < 5 && media >= 0){
